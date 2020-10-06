@@ -6,7 +6,7 @@
   "scripts": {
     "submit": "node -r dotenv/config submit.js"
   },
-  "author": "",
+  "author": "Robertjb",
   "license": "ISC",
   "dependencies": {
     "bestzip": "^2.1.7",
@@ -16,5 +16,14 @@
     "dotenv": "^8.0.0",
     "form-data": "^2.5.0",
     "prompts": "^2.1.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertjbennett99/CHRentalRatings.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robertjbennett99/CHRentalRatings/issues"
+  },
+  "homepage": "https://github.com/robertjbennett99/CHRentalRatings#readme"
 }
