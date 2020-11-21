@@ -1,37 +1,49 @@
-// Executes when login state changes
-firebase.auth().onAuthStateChanged(function(user) {
-
-    if (user) {
-        // User is signed in.
-    
-        document.getElementById("user_div").style.display = "block";
-        document.getElementById("login_div").style.display = "none";
-
-        var user = firebase.auth().currentUser;
-    
-      } else {
-        // No user is signed in.
-        document.getElementById("user_div").style.display = "none";
-        document.getElementById("login_div").style.display = "block";
-      }
-  });
+let loggedin = false; // TEMP
 
 function login() {
-    let userEmail = document.getElementById("email_field").value;
+    let username = document.getElementById("username_field").value;
     let userPassword = document.getElementById("password_field").value;
+    let success = checkCredentials(username, userPassword)
 
-    firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
-    .then((user) => {
-        alert('Success!! You are signed in')
-    })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
 
-        alert("Error : " + errorMessage )
-    });
+    if(success) {
+        loggedin = true
+        loginStateChange()
+    }
+    else { alert('Invalid Username or Password ')}
+    return;
 }
 
 function logout(){
-    firebase.auth().signOut();
+    loggedin = false;
+    loginStateChange()
+
+    // REPLACE FUNCTIONALITY
+
+}
+
+function loginStateChange() {
+    if (checkLoginState()) {
+        document.getElementById("user_div").style.display = "block";
+        document.getElementById("login_div").style.display = "none";
+      } else {
+        document.getElementById("user_div").style.display = "none";
+        document.getElementById("login_div").style.display = "block";
+      }
+};
+
+
+
+function checkLoginState() {
+    return loggedin
+    // REPLACE FUNCTIONALITY
+}
+
+function checkCredentials(user, pass) {
+    if(user == pass) {
+        return true;
+    }
+    return false
+
+    // REPLACE FUNCTIONALITY
 }
