@@ -3,15 +3,24 @@ let loggedin = false; // TEMP
 let login = async function() {
     let username = document.getElementById("username_field").value;
     let userPassword = document.getElementById("password_field").value;
-    let success = await axios({
-        method: 'post',
-        url: 'https://zrdj-stocksentiments.herokuapp.com/login',
-        withCredentials: true,
-        data: {
-            "username": $(username),
-            "password": $(userPassword)
-        },
-    })
+    let success = false
+    try {
+        success = await axios({
+            method: 'post',
+            url: 'https://zrdj-stocksentiments.herokuapp.com/login',
+            withCredentials: true,
+            headers: {"Access-Control-Allow-Origin": "*"},
+            data: {
+                "username": $(username),
+                "password": $(userPassword)
+            },
+        })
+    } catch (error) {
+        alert("Network Error")
+        return;
+    }
+    
+    
 
     if(success) {
         loggedin = true
