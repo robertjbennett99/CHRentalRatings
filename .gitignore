@@ -1,6 +1,7 @@
 submission.zip
 .vscode
 bulma-0.9.1.tgz
+/node_modules
 .env
 .idea/comp426-cli.iml
 .idea/workspace.xml

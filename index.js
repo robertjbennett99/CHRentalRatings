@@ -1,3 +1,7 @@
+var port = process.env.PORT || 3000 // set port(s)
+
+
+
 let loggedin = false; // TEMP
 
 let login = async function() {
