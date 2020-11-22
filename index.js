@@ -1,10 +1,17 @@
 let loggedin = false; // TEMP
 
-function login() {
+let login = async function() {
     let username = document.getElementById("username_field").value;
     let userPassword = document.getElementById("password_field").value;
-    let success = checkCredentials(username, userPassword)
-
+    let success = await axios({
+        method: 'post',
+        url: 'https://zrdj-stocksentiments.herokuapp.com/login',
+        withCredentials: true,
+        data: {
+            "username": $(username),
+            "password": $(userPassword)
+        },
+    })
 
     if(success) {
         loggedin = true
@@ -23,7 +30,7 @@ function logout(){
 }
 
 function loginStateChange() {
-    if (checkLoginState()) {
+    if (loggedin) {
         document.getElementById("user_div").style.display = "block";
         document.getElementById("login_div").style.display = "none";
       } else {
@@ -34,16 +41,3 @@ function loginStateChange() {
 
 
 
-function checkLoginState() {
-    return loggedin
-    // REPLACE FUNCTIONALITY
-}
-
-function checkCredentials(user, pass) {
-    if(user == pass) {
-        return true;
-    }
-    return false
-
-    // REPLACE FUNCTIONALITY
-}

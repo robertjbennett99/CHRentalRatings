@@ -17,6 +17,7 @@
     "dotenv": "^8.0.0",
     "firebase": "^8.1.1",
     "form-data": "^2.5.0",
+    "jquery": "^3.5.1",
     "prompts": "^2.1.0"
   },
   "devDependencies": {},
