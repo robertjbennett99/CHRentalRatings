@@ -1,12 +1,14 @@
-// import express, { static } from 'express';
+// var port = process.env.PORT || 5000
+// var express = require('express')
 // var app = express();
 
-// app.use(static(__dirname))
+// app.use(express.static(__dirname))
 
-// var port = process.env.PORT || 3000 // set port(s)
-// app.listen(port, function(){
-//     console.log('Frontend up and running on port ' + port)
+// app.listen(port, function()  {
+//     console.log("frontend up and running")
 // })
+
+
 
 
 let loggedin = false; // TEMP
