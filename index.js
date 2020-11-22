@@ -4,29 +4,29 @@ let login = async function() {
     let username = document.getElementById("username_field").value;
     let userPassword = document.getElementById("password_field").value;
     let success = false
+    
     try {
         success = await axios({
             method: 'post',
             url: 'https://zrdj-stocksentiments.herokuapp.com/login',
-            withCredentials: true,
+            //url: 'http://localhost:3030/login',
+            withCredentials: false,
             headers: {"Access-Control-Allow-Origin": "*"},
             data: {
-                "username": $(username),
-                "password": $(userPassword)
+                "username": username,
+                "password": userPassword
             },
         })
     } catch (error) {
-        alert("Network Error")
-        return;
+        alert('invalid username')
+        return
     }
-    
-    
 
-    if(success) {
+    if(success.data) {
         loggedin = true
         loginStateChange()
     }
-    else { alert('Invalid Username or Password ')}
+    else { alert('Invalid Password ')}
     return;
 }
 
