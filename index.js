@@ -1,7 +1,9 @@
+// const express = require('express');
+
 
 let loggedin = false; // TEMP
 
-let login = async function() {
+async function login() {
     let username = document.getElementById("username_field").value;
     let userPassword = document.getElementById("password_field").value;
     let success = false
@@ -31,7 +33,7 @@ let login = async function() {
     return;
 }
 
-function logout(){
+async function logout(){
     loggedin = false;
     loginStateChange()
 
@@ -48,6 +50,5 @@ function loginStateChange() {
         document.getElementById("login_div").style.display = "block";
       }
 };
-
 
 
