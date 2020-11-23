@@ -23,7 +23,7 @@
 
             <div id="main">
                 <div id="search">
-                    <input type="text" id="searchbar" name="search" placeholder="Add Ticker ...">
+                    <input type="text" onkeypress="autofillSearch()" id="searchbar" name="search" placeholder="Add Ticker ...">
                     <button id="addticker" onclick="addTicker()"><i class="fas fa-plus"></i></button>
                     <input type="text" id="deletebar" name="delete" placeholder="Remove Ticker ...">
                     <button id="deleteticker" onclick="deleteTicker()"><i class="fas fa-minus"></i></button>
@@ -54,6 +54,8 @@
         <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
         <script src="index.js"></script>
         <script src="login.js"></script>
+        <script src="graph.js"></script>
+        <script src="autocomplete.js"></script>
 
     </body>
 </html>
