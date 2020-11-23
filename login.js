@@ -80,7 +80,7 @@ let getTickers = async function() {
 }
 
 let addTicker = async function() {
-    let ticker = document.getElementById("searchbar").value
+    let ticker = document.getElementById("searchbar").value.toUpperCase();
 
     if(ticker == "") {
         return;
@@ -100,10 +100,11 @@ let addTicker = async function() {
     });
 
     $('#tickers').append(`<p class='tick'>${ticker}</p>`);
+    tickerArray.push(ticker);
 };
 
 let deleteTicker = async function() {
-    let ticker = document.getElementById("deletebar").value;
+    let ticker = document.getElementById("deletebar").value.toUpperCase();
 
     let doesInclude = tickerArray.includes(ticker);
 
