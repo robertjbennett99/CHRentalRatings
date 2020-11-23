@@ -77,6 +77,11 @@ let getTickers = async function() {
 
 let addTicker = async function() {
     let ticker = document.getElementById("searchbar").value
+
+    if(ticker == "") {
+        return;
+    }
+
     $('#searchbar').val("");
 
     const result = await axios({
@@ -92,6 +97,30 @@ let addTicker = async function() {
 
     $('#tickers').append(`<p class='tick'>${ticker}</p>`);
 };
+
+let deleteTicker = async function() {
+    let ticker = document.getElementById("deletebar").value;
+
+    let doesInclude = tickerArray.includes(ticker);
+
+    if(doesInclude) {
+        const result = await axios({
+            method: 'post',
+            url: 'https://zrdj-stocksentiments.herokuapp.com/deletekeyword',
+            withCredentials: false,
+            headers: {"Access-Control-Allow-Origin": "*"},
+            data: {
+                "username": `${username}`,
+                "keyword": `${ticker}`
+            }
+        });
+        $('#deletebar').val("");
+        $('p').filter(`:contains('${ticker}')`).remove();
+    } else {
+        $('#delete').val("");
+        return;
+    }
+}
 
 var tickerArray = [];
 

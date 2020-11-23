@@ -22,18 +22,26 @@
 
             <div id="main">
                 <div id="search">
-                    <input type="text" id="searchbar" name="search" placeholder="Search ...">
-                    <button onclick="addTicker()">Add Ticker</button>
+                    <input type="text" id="searchbar" name="search" placeholder="Add Ticker ...">
+                    <button id="addticker" onclick="addTicker()"><i class="fas fa-plus"></i></button>
+                    <input type="text" id="deletebar" name="delete" placeholder="Remove Ticker ...">
+                    <button id="deleteticker" onclick="deleteTicker()"><i class="fas fa-minus"></i></button>
                 </div>
 
                 <div id="tickandsent">
+
                     <div id="tickers"></div>
+
                     <div id="sentiment">
                         <div class="meter">
                             <meter max="100" low="33" high="66" optimum="67" value="65"></meter>
                         </div>
+                        <div class="meter">
                             <meter max="100" low="33" high="66" optimum="67" value="88"></meter>
+                        </div>
+                        <div class="meter">
                             <meter max="100" low="33" high="66" optimum="67" value="10"></meter>
+                        </div>
                     </div>
                 </div>
             </div>
