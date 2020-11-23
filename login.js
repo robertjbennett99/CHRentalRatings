@@ -18,7 +18,7 @@ async function login() {
             },
         })
     } catch (error) {
-        alert('invalid username')
+        document.getElementById("login_error").innerHTML = 'User does not exist';
         return
     }
 
@@ -26,7 +26,7 @@ async function login() {
         loggedin = true
         loginStateChange()
     }
-    else { alert('Invalid Password ')}
+    else { document.getElementById("login_error").innerHTML = 'Incorrect password'; }
     return;
 }
 
@@ -36,6 +36,11 @@ async function logout(){
 
     // REPLACE FUNCTIONALITY 
     // ERASE INPUT
+    document.getElementById("username_field").value = '';
+    document.getElementById("password_field").value = '';
+    document.getElementById("login_error").innerHTML = '';
+
+
     // SEND LOGOUT REQUEST TO GET RID OF KEYWORD STORE
 
 }
