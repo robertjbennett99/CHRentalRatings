@@ -17,6 +17,29 @@
         <div id="user_div" style="display: none">
             <h1>Success. You are logged in</h1>
             <button onclick="logout()">Logout</button>
+
+            <div id="main">
+                <div id="search">
+                    <input type="search" id="searchbar" name="search" placeholder="Search ...">
+                    <button id="searchbutton">Search</button>
+                </div>
+
+                <div id="tickandsent">
+                    <div id="tickers">
+                        <div class="ticker">
+                            
+                        </div>
+                    </div>
+                    <div id="sentiment">
+                        <div class="meter">
+                            <meter max="100" low="33" high="66" optimum="67" value="65"></meter>
+                        </div>
+                            <meter max="100" low="33" high="66" optimum="67" value="88"></meter>
+                            <meter max="100" low="33" high="66" optimum="67" value="10"></meter>
+                    </div>
+                </div>
+            </div>
+
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

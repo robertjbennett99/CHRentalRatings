@@ -34,7 +34,9 @@ async function logout(){
     loggedin = false;
     loginStateChange()
 
-    // REPLACE FUNCTIONALITY
+    // REPLACE FUNCTIONALITY 
+    // ERASE INPUT
+    // SEND LOGOUT REQUEST TO GET RID OF KEYWORD STORE
 
 }
 
