@@ -1,6 +1,5 @@
 // const express = require('express');
 
-
 let loggedin = false; // TEMP
 
 async function login() {
