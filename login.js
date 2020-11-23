@@ -86,6 +86,11 @@ let addTicker = async function() {
         return;
     }
 
+    if(!symbols.hasOwnProperty(ticker)) {
+        $('#searchbar').val("");
+        return;
+    }
+
     $('#searchbar').val("");
 
     const result = await axios({
