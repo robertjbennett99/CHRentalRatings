@@ -22,7 +22,8 @@ async function login() {
 
     if(success.data) {
         loggedin = true
-        loginStateChange()
+        loginStateChange();
+        getTickers();
     }
     else { document.getElementById("login_error").innerHTML = 'Incorrect Username or Password'; }
     return;
@@ -30,6 +31,8 @@ async function login() {
 
 async function logout(){
     loggedin = false;
+    $('.tick').remove();
+    tickerArray = [];
     loginStateChange()
 
     // REPLACE FUNCTIONALITY 
@@ -43,16 +46,12 @@ async function logout(){
 
 }
 
-var counter = 0;
+
 
 function loginStateChange() {
     if (loggedin) {
         document.getElementById("user_div").style.display = "block";
         document.getElementById("login_div").style.display = "none";
-        if(counter == 0) {
-            getTickers();
-        }
-        counter++;
       } else {
         document.getElementById("user_div").style.display = "none";
         document.getElementById("login_div").style.display = "block";
@@ -71,7 +70,7 @@ let getTickers = async function() {
 
     let i=0;
     while(i<tickerArray.length) {
-        $('#tickers').append(`<p>${tickerArray[i]}</p>`);
+        $('#tickers').append(`<p class='tick'>${tickerArray[i]}</p>`);
         i++;
     }
 }
@@ -90,6 +89,8 @@ let addTicker = async function() {
             "keyword": `${ticker}`
         }
     });
+
+    $('#tickers').append(`<p class='tick'>${ticker}</p>`);
 };
 
 var tickerArray = [];
