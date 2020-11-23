@@ -24,6 +24,10 @@ async function login() {
         loggedin = true
         loginStateChange();
         getTickers();
+
+        document.getElementById("username_field").value = '';
+        document.getElementById("password_field").value = '';
+        document.getElementById("login_error").innerHTML = '';
     }
     else { document.getElementById("login_error").innerHTML = 'Incorrect Username or Password'; }
     return;
@@ -154,7 +158,7 @@ async function createAccount() {
                 "keywords": []
             },
         })
-        document.getElementById("login_error").innerHTML = `User ${username} Successfully Created`;
+        document.getElementById("login_error").innerHTML = `User ${username} Successfully Created. Re-Enter Credentials to Login.`;
     }
     document.getElementById("username_field").value = '';
     document.getElementById("password_field").value = '';
