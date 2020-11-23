@@ -122,7 +122,7 @@ let deleteTicker = async function() {
         $('#deletebar').val("");
         $('p').filter(`:contains('${ticker}')`).remove();
     } else {
-        $('#delete').val("");
+        $('#deletebar').val("");
         return;
     }
 }
