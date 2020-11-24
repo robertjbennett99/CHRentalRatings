@@ -6,7 +6,7 @@ Our sentiment analysis gathers data using the Twitter API and News API. Recent h
 
 Tech stack used: JS/HTML/CSS. CDN used to access modules such as axios, ajax, bulma.
 
-Login and user data is stored on a backend hosted by heroku. Backend code can be found here: https://github.com/robertjbennett99/ZRDJStockSentimentBackend
+Login and user data is stored on a backend hosted by heroku. Backend code can be found here: https://github.com/robertjbennett99/ZRDJBackend
 
 
  
