@@ -29,7 +29,7 @@ let login = async function() {
         document.getElementById("username_field").value = '';
         document.getElementById("password_field").value = '';
         document.getElementById("login_error").innerHTML = '';
-        document.getElementById("welcome").append(`Welcome, ${username}!`);
+        document.getElementById("welcome_user").innerHTML += `Welcome, ${username}!`;
     }
     else { document.getElementById("login_error").innerHTML = 'Incorrect Username or Password'; }
     return;
@@ -46,6 +46,8 @@ let logout = async function(){
     document.getElementById("username_field").value = '';
     document.getElementById("password_field").value = '';
     document.getElementById("login_error").innerHTML = '';
+    document.getElementById("welcome_user").innerHTML = '';
+    document.getElementById("sentiment").innerHTML = '';
 
 
     // SEND LOGOUT REQUEST TO GET RID OF KEYWORD STORE
