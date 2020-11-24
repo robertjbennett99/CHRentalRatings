@@ -1,7 +1,7 @@
 let loggedin = false; // TEMP
 var username;
 
-async function login() {
+let login = async function() {
     username = document.getElementById("username_field").value;
     let userPassword = document.getElementById("password_field").value;
     let success = false
@@ -34,7 +34,7 @@ async function login() {
     return;
 }
 
-async function logout(){
+let logout = async function(){
     loggedin = false;
     $('.tick').remove();
     tickerArray = [];
@@ -56,7 +56,7 @@ let getTickerDatalist = function() {
     symbols_1.forEach(symbol => $('#alltickers').append(`<option value=${symbol}>`));
 }
 
-function loginStateChange() {
+let loginStateChange = function() {
     if (loggedin) {
         document.getElementById("user_div").style.display = "block";
         document.getElementById("login_div").style.display = "none";
@@ -78,7 +78,7 @@ let getTickers = async function() {
 
     let i=0;
     while(i<tickerArray.length) {
-        $('#tickers').append(`<p class='tick'>${tickerArray[i]}</p>`);
+        $('#tickers').append(`<button id='${tickerArray[i]}' class='tick' onclick="getSentiment(this.id)">${tickerArray[i]}</button>`);
         i++;
     }
     tickerArray.forEach(ticker => $('#mytickers').append(`<option value=${ticker}>`));
@@ -114,7 +114,7 @@ let addTicker = async function() {
         }
     });
 
-    $('#tickers').append(`<p class='tick'>${ticker}</p>`);
+    $('#tickers').append(`<button id='${ticker}' class='tick' onclick="getSentiment(this.id)">${ticker}</button>`);
     $('#mytickers').append(`<option value=${ticker}>`);
     tickerArray.push(ticker);
 };
@@ -136,7 +136,7 @@ let deleteTicker = async function() {
             }
         });
         $('#deletebar').val("");
-        $('p').filter(`:contains('${ticker}')`).remove();
+        $('button').filter(`:contains('${ticker}')`).remove();
         $(`option[value='${ticker}']`).remove();
     } else {
         $('#deletebar').val("");
@@ -180,4 +180,33 @@ async function createAccount() {
     }
     document.getElementById("username_field").value = '';
     document.getElementById("password_field").value = '';
+}
+
+let getSentiment = async function(ticker) {
+
+    $('.meter').remove();
+
+    let social = await axios({
+        method: 'get', 
+        url: `https://zrdj-stocksentiments.herokuapp.com/twittersentiment/${ticker}`,
+        withCredentials: false,
+        headers: {"Access-Control-Allow-Origin": "*"},
+    });
+
+    let news = await axios({
+        method: 'get',
+        url: `https://zrdj-stocksentiments.herokuapp.com/newssentiment/${ticker}`,
+        withCredentials: false,
+        headers: {"Access-Control-Allow-Origin": "*"},
+    });
+
+    $('#sentiment').append(`<div class="meter">
+    <meter max="3" min="-3" low="-0.5" high="0.5" optimum="0.5000001" value="${social.data}"></meter>
+    <p>Social Sentiment Value of ${ticker}: ${social.data}</p>
+    </div>`);
+
+    $('#sentiment').append(`<div class="meter">
+    <meter max="3" min="-3" low="-0.5" high="0.5" optimum="0.5000001" value="${news.data}"></meter>
+    <p>News Sentiment Value of ${ticker}: ${news.data}</p>
+    </div>`);
 }
