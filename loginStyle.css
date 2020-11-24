@@ -9,6 +9,15 @@ body {
     font-size:18px;
 }
 
+#welcome {
+    overflow: hidden;
+}
+
+h1{
+    float: left;
+    margin-top: 35px;
+}
+
 #user_div {
     max-height: 95%;
 }
@@ -40,6 +49,8 @@ p {
 
 #logout {
     width: 10%;
+    float: right;
+    margin-top: 30px;
 }
 
 .mainLoginDiv button:hover {
