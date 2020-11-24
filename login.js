@@ -185,9 +185,12 @@ async function createAccount() {
 
 let getSentiment = async function(ticker) {
 
+    $('.active').removeClass('active');
+
     let company = symbols[ticker];
 
     $('.meter').remove();
+    $('h3').remove();
 
     let social = await axios({
         method: 'get', 
@@ -203,13 +206,17 @@ let getSentiment = async function(ticker) {
         headers: {"Access-Control-Allow-Origin": "*"},
     });
 
+    $(`#${ticker}`).addClass('active');
+
+    $('#sentiment').append(`<h3 style="text-align:center;">${company}</h3>`);
+
     $('#sentiment').append(`<div class="meter">
     <meter max="3" min="-3" low="-0.5" high="0.5" optimum="0.5000001" value="${social.data}"></meter>
-    <p>Social Sentiment Value of ${company}: ${social.data}</p>
+    <p>Social Sentiment: ${social.data}</p>
     </div>`);
 
     $('#sentiment').append(`<div class="meter">
     <meter max="3" min="-3" low="-0.5" high="0.5" optimum="0.5000001" value="${news.data}"></meter>
-    <p>News Sentiment Value of ${company}: ${news.data}</p>
+    <p>News Sentiment: ${news.data}</p>
     </div>`);
 }
