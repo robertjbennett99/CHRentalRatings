@@ -18,14 +18,15 @@
         </div>
 
         <div id="user_div" style="display: none">
-            <h1>Success. You are logged in</h1>
-            <button onclick="logout()">Logout</button>
+            <button id ="logout" onclick="logout()">Logout</button>
 
             <div id="main">
                 <div id="search">
-                    <input type="text" onkeypress="autofillSearch()" id="searchbar" name="search" placeholder="Add Ticker ...">
+                    <input list="alltickers" type="text" id="searchbar" name="search" placeholder="Add Ticker ...">
+                    <datalist id="alltickers"></datalist>
                     <button id="addticker" onclick="addTicker()"><i class="fas fa-plus"></i></button>
-                    <input type="text" id="deletebar" name="delete" placeholder="Remove Ticker ...">
+                    <input list ="mytickers" type="text" id="deletebar" name="delete" placeholder="Remove Ticker ...">
+                    <datalist id="mytickers"></datalist>
                     <button id="deleteticker" onclick="deleteTicker()"><i class="fas fa-minus"></i></button>
                 </div>
 

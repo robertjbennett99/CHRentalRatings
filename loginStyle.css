@@ -30,6 +30,10 @@ button {
     color: red;
 }
 
+#logout {
+    width: 10%;
+}
+
 .mainLoginDiv button:hover {
     background: #fff;
     color: #38688a;
@@ -68,8 +72,9 @@ input, button {
 #searchbar {
     border: 1px solid black;
     float: left;
-    width: 40%;
+    width: 35%;
     height: 50px;
+    margin-left: 4%;
 }
 
 #addticker {
@@ -83,9 +88,9 @@ input, button {
 #deletebar {
     border: 1px solid black;
     float: left;
-    width: 40%;
+    width: 35%;
     height: 50px;
-    margin-left: 7%;
+    margin-left: 12%;
 }
 
 #deleteticker {
@@ -94,7 +99,7 @@ input, button {
     width: 5%;
     border-left: none;
     height: 50px;
-    margin-right: 3%;
+    margin-right: 4%;
 }
 
 ::placeholder{

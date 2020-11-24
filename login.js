@@ -24,6 +24,7 @@ async function login() {
         loggedin = true
         loginStateChange();
         getTickers();
+        getTickerDatalist();
 
         document.getElementById("username_field").value = '';
         document.getElementById("password_field").value = '';
@@ -50,7 +51,10 @@ async function logout(){
 
 }
 
-
+let getTickerDatalist = function() {
+    let symbols_1 = Object.keys(symbols);
+    symbols_1.forEach(symbol => $('#alltickers').append(`<option value=${symbol}>`));
+}
 
 function loginStateChange() {
     if (loggedin) {
@@ -77,6 +81,7 @@ let getTickers = async function() {
         $('#tickers').append(`<p class='tick'>${tickerArray[i]}</p>`);
         i++;
     }
+    tickerArray.forEach(ticker => $('#mytickers').append(`<option value=${ticker}>`));
 }
 
 let addTicker = async function() {
@@ -87,6 +92,11 @@ let addTicker = async function() {
     }
 
     if(!symbols.hasOwnProperty(ticker)) {
+        $('#searchbar').val("");
+        return;
+    }
+
+    if(tickerArray.includes(ticker)) {
         $('#searchbar').val("");
         return;
     }
@@ -105,6 +115,7 @@ let addTicker = async function() {
     });
 
     $('#tickers').append(`<p class='tick'>${ticker}</p>`);
+    $('#mytickers').append(`<option value=${ticker}>`);
     tickerArray.push(ticker);
 };
 
@@ -126,6 +137,7 @@ let deleteTicker = async function() {
         });
         $('#deletebar').val("");
         $('p').filter(`:contains('${ticker}')`).remove();
+        $(`option[value='${ticker}']`).remove();
     } else {
         $('#deletebar').val("");
         return;

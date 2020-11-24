@@ -1,4 +1,4 @@
-const symbols =
+var symbols =
     {
       "AACG": "Ata Creativity Global",
       "AACQ": "Artius Acquisition Inc Cl A",
