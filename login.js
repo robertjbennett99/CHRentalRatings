@@ -138,6 +138,7 @@ let deleteTicker = async function() {
         $('#deletebar').val("");
         $('button').filter(`:contains('${ticker}')`).remove();
         $(`option[value='${ticker}']`).remove();
+        $('#alltickers').append(`<option value=${ticker}>`)
     } else {
         $('#deletebar').val("");
         return;
@@ -184,6 +185,8 @@ async function createAccount() {
 
 let getSentiment = async function(ticker) {
 
+    let company = symbols[ticker];
+
     $('.meter').remove();
 
     let social = await axios({
@@ -202,11 +205,11 @@ let getSentiment = async function(ticker) {
 
     $('#sentiment').append(`<div class="meter">
     <meter max="3" min="-3" low="-0.5" high="0.5" optimum="0.5000001" value="${social.data}"></meter>
-    <p>Social Sentiment Value of ${ticker}: ${social.data}</p>
+    <p>Social Sentiment Value of ${company}: ${social.data}</p>
     </div>`);
 
     $('#sentiment').append(`<div class="meter">
     <meter max="3" min="-3" low="-0.5" high="0.5" optimum="0.5000001" value="${news.data}"></meter>
-    <p>News Sentiment Value of ${ticker}: ${news.data}</p>
+    <p>News Sentiment Value of ${company}: ${news.data}</p>
     </div>`);
 }

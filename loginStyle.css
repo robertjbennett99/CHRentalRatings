@@ -13,6 +13,10 @@ button {
     cursor: pointer;
 }
 
+p {
+    text-align: center;
+}
+
 .mainLoginDiv {
     width: 35%;
     margin: 0px auto;
@@ -137,12 +141,11 @@ meter {
     width: 90%;
     margin-left: 5%;
     margin-top: 17px;
-    margin-bottom: 35px;
 }
 
 .meter {
     border-bottom: 1px solid black;
-    height: 52px;
+    height: 100px;
     margin-top: 18px;
     border-top: 1px solid black;
     background-color: white;
