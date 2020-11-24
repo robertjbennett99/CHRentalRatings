@@ -2,6 +2,7 @@ let loggedin = false; // TEMP
 var username;
 var anyStocks = false;
 var stockCounter = 0;
+var firstCall = true;
 
 let login = async function() {
     username = document.getElementById("username_field").value;
@@ -53,6 +54,7 @@ let logout = async function(){
 
     $('.nosent').remove();
     $('.nostocks').remove();
+    $('.stocktitle').remove();
 
     // SEND LOGOUT REQUEST TO GET RID OF KEYWORD STORE
 
@@ -86,6 +88,10 @@ let getTickers = async function() {
     let i=0;
     while(i<tickerArray.length) {
         anyStocks = true;
+        if(firstCall) {
+            $('#tickers').append(`<h2 class='stocktitle'>Stock List:</h2>`);
+            firstCall = false;
+        }
         $('#tickers').append(`<button id='${tickerArray[i]}' class='tick' onclick="getSentiment(this.id)">${tickerArray[i]}</button>`);
         i++;
         stockCounter++;
@@ -129,6 +135,11 @@ let addTicker = async function() {
         }
     });
 
+    if(firstCall) {
+        $('#tickers').append(`<h2 class='stocktitle'>Stock List:</h2>`);
+        firstCall = false;
+    }
+
     $('#tickers').append(`<button id='${ticker}' class='tick' onclick="getSentiment(this.id)">${ticker}</button>`);
     $('#mytickers').append(`<option value=${ticker}>`);
     tickerArray.push(ticker);
@@ -160,7 +171,9 @@ let deleteTicker = async function() {
         $('#alltickers').append(`<option value=${ticker}>`);
         stockCounter--;
         if(stockCounter == 0) {
+            $('.stocktitle').remove();
             $('#tickers').append(`<h2 class='nostocks'>Please add a stock!</h2>`);
+            firstCall = true;
         }
     } else {
         $('#deletebar').val("");
