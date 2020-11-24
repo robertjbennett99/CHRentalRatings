@@ -37,6 +37,19 @@ p {
     text-align: center;
 }
 
+#desc {
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    padding: 3px;
+    border: 1px solid black;
+}
+
+.desc{
+    width: 92%;
+    margin-left: 4%;
+}
+
 .mainLoginDiv {
     width: 35%;
     margin: 0px auto;
