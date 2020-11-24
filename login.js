@@ -1,5 +1,7 @@
 let loggedin = false; // TEMP
 var username;
+var anyStocks = false;
+var stockCounter = 0;
 
 let login = async function() {
     username = document.getElementById("username_field").value;
@@ -49,6 +51,8 @@ let logout = async function(){
     document.getElementById("welcome_user").innerHTML = '';
     document.getElementById("sentiment").innerHTML = '';
 
+    $('.nosent').remove();
+    $('.nostocks').remove();
 
     // SEND LOGOUT REQUEST TO GET RID OF KEYWORD STORE
 
@@ -81,10 +85,18 @@ let getTickers = async function() {
 
     let i=0;
     while(i<tickerArray.length) {
+        anyStocks = true;
         $('#tickers').append(`<button id='${tickerArray[i]}' class='tick' onclick="getSentiment(this.id)">${tickerArray[i]}</button>`);
         i++;
+        stockCounter++;
     }
     tickerArray.forEach(ticker => $('#mytickers').append(`<option value=${ticker}>`));
+
+    if(!anyStocks) {
+        $('#tickers').append(`<h2 class='nostocks'>Please add a stock!</h2>`);
+    }
+
+    $('#sentiment').append(`<h2 class='nosent'>Select ticker to view sentiment.</h2>`);
 }
 
 let addTicker = async function() {
@@ -120,6 +132,10 @@ let addTicker = async function() {
     $('#tickers').append(`<button id='${ticker}' class='tick' onclick="getSentiment(this.id)">${ticker}</button>`);
     $('#mytickers').append(`<option value=${ticker}>`);
     tickerArray.push(ticker);
+    if(stockCounter == 0) {
+        $('.nostocks').remove();
+    }
+    stockCounter++;
 };
 
 let deleteTicker = async function() {
@@ -141,7 +157,11 @@ let deleteTicker = async function() {
         $('#deletebar').val("");
         $('button').filter(`:contains('${ticker}')`).remove();
         $(`option[value='${ticker}']`).remove();
-        $('#alltickers').append(`<option value=${ticker}>`)
+        $('#alltickers').append(`<option value=${ticker}>`);
+        stockCounter--;
+        if(stockCounter == 0) {
+            $('#tickers').append(`<h2 class='nostocks'>Please add a stock!</h2>`);
+        }
     } else {
         $('#deletebar').val("");
         return;
@@ -189,6 +209,8 @@ async function createAccount() {
 let getSentiment = async function(ticker) {
 
     $('.active').removeClass('active');
+
+    $('.nosent').remove();
 
     let company = symbols[ticker];
 
