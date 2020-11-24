@@ -9,6 +9,10 @@ body {
     font-size:18px;
 }
 
+#user_div {
+    max-height: 95%;
+}
+
 button {
     cursor: pointer;
 }
@@ -115,11 +119,12 @@ input, button {
 #tickandsent {
     margin-top: 1%;
     padding-top: 2.5%;
+    height: auto;
     border-top: 2px solid black;
 }
 
 #tickandsent > div {
-    height: 100%;
+    height: auto;
     border: 2px solid black;
 }
 
@@ -128,6 +133,8 @@ input, button {
     width: 44%;
     background-color: white;
     margin-left: 4%;
+    overflow: auto;
+    max-height: 95%;
 }
 
 #sentiment{
@@ -135,7 +142,10 @@ input, button {
     width: 44%;
     background-color: #e7e7e7;
     margin-right: 4%;
+    height: auto;
 }
+
+
 
 meter {
     width: 90%;
