@@ -38,7 +38,7 @@ let login = async function() {
     return;
 }
 
-let logout = async function(){
+let logout = async function() {
     loggedin = false;
     $('.tick').remove();
     tickerArray = [];
