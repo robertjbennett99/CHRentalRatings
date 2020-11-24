@@ -55,6 +55,9 @@ let logout = async function(){
     $('.nosent').remove();
     $('.nostocks').remove();
     $('.stocktitle').remove();
+    firstCall = true;
+    stockCounter = 0;
+    anyStocks = false;
 
     // SEND LOGOUT REQUEST TO GET RID OF KEYWORD STORE
 
